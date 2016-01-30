@@ -28,48 +28,88 @@ don't worry about it. My one request is that if you do create a super-awesome ne
 so I can try it out.
 """
 import urllib2
+import os
+class blue_marble_desktop():
+    def __init__(self):
 
-url_list             = 'http://epic.gsfc.nasa.gov/api/images.php'      #URL containing a list of the most recent images.
-url_image_base       = 'http://epic.gsfc.nasa.gov/epic-archive/png/'   #Base URL names are addend to to get the download site.
-url_API_description  = 'http://epic.gsfc.nasa.gov/about.html'          #API Url. Not actually used for anything but handy.
+        self.url_list             = 'http://epic.gsfc.nasa.gov/api/images.php'      #URL containing a list of the most recent images.
+        self.url_image_base       = 'http://epic.gsfc.nasa.gov/epic-archive/png/'   #Base URL names are addend to to get the download site.
+        self.url_API_description  = 'http://epic.gsfc.nasa.gov/about.html'          #API Url. Not actually used for anything but handy.
 
-# Get a list of the most recent images
-image_list = urllib2.urlopen(url_list).read()
-print image_list
+    def save_file(self,image_page,name):
+        file_desktop = open("images/" + name, "wb")
+        while True:
+            strip = image_page.read(1028)
+            file_desktop.write(strip)
 
-#issolate the most recent image name.
-image_name = image_list[:36]
-image_name = image_name[11:]
-print image_name
+            if not strip:
+                break
 
-url_image = url_image_base + image_name + ".png"
-image_page = urllib2.urlopen(url_image)
-file_desktop = open("desktop.png", "wb")
+        file_desktop.close()
+
+    def get_name_list(self,data):
+        """
+        Parses the data-dump for the name strings included. These can be used to request files from the EPIC servers.
+        :param data:
+        :return:
+        """
+        names = []
+        while "image" in data:
+            #remove text before target name
+            index = data.index("image")
+            data = data[index:]
+            data = data[8:]
+            name = data[:25] #issolate the current name.
+
+            #print data
+            #print name
+
+            names.append(name) #add name to list.
+
+        return names
+
+    def delete_images(self, folder):
+        """
+        This method deletes all of the files in a folder whose names start with "epic." This can be useful for clearing
+        the image folder before the next set of images is put in it. Note: there is some
+        :param folder:
+        :return:
+        """
+        file_list = os.listdir(folder)
 
 
-while True:
-    strip = image_page.read(1028)
-    file_desktop.write(strip)
-
-    if not strip:
-        break
-
-file_desktop.close()
-
-url_image = url_image_base + image_name + ".png"
-image_page = urllib2.urlopen(url_image)
-file_desktop = open("desktop1.png", "wb")
+    def do_thing(self):
 
 
-while True:
-    strip = image_page.read(1028)
-    file_desktop.write(strip)
+        # Get a list of the most recent images
+        image_list = urllib2.urlopen(self.url_list).read()
+        print image_list
 
-    if not strip:
-        break
+        list = self.get_name_list(image_list)
+        print list
+        print len(list)
 
-file_desktop.close()
+        # for each name in the list, generate a unique file name and save the data to a file.
+        for i in range(0, len(list)):
+            try:
+                print i
+                url_image = self.url_image_base + list[i-1]  + ".png"
+                image_name = list[i] + str(i) + ".png"
+                image_page = urllib2.urlopen(url_image) #get file from server.
+                self.save_file(image_page,image_name)
+            except:
+                print"ERROR"
+
+        print os.listdir("images")
 
 
 
 
+
+
+
+
+
+
+#blue_marble_desktop().do_thing()
+print os.listdir("images")
