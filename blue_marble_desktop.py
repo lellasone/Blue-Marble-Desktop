@@ -76,32 +76,33 @@ class blue_marble_desktop():
         :return:
         """
         file_list = os.listdir(folder)
+        print file_list
+        for f in file_list:
+            f.remove();
 
 
     def do_thing(self):
 
-
+        print os.listdir("images")
         # Get a list of the most recent images
         image_list = urllib2.urlopen(self.url_list).read()
-        print image_list
+        #print image_list
 
         list = self.get_name_list(image_list)
-        print list
-        print len(list)
+        #print list
+        #print len(list)
 
         # for each name in the list, generate a unique file name and save the data to a file.
         for i in range(0, len(list)):
             try:
-                print i
+                #print i
                 url_image = self.url_image_base + list[i-1]  + ".png"
                 image_name = list[i] + str(i) + ".png"
                 image_page = urllib2.urlopen(url_image) #get file from server.
                 self.save_file(image_page,image_name)
             except:
-                print"ERROR"
-
-        print os.listdir("images")
-
+                thing = 1
+                #print "image write error for photo: " + str(i)
 
 
 
@@ -111,5 +112,7 @@ class blue_marble_desktop():
 
 
 
-#blue_marble_desktop().do_thing()
+
+
+blue_marble_desktop().do_thing()
 print os.listdir("images")
