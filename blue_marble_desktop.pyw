@@ -71,14 +71,12 @@ class blue_marble_desktop():
 
         return names
 
-    def delete_images(self, folder):
+    def delete_images(self, file_list):
         """
-        This method deletes all of the files in a folder whose names start with "epic." This can be useful for clearing
-        the image folder before the next set of images is put in it. Note: there is some
+        This clears the image folder of all the images included in the file list.
         :param folder:
         :return:
         """
-        file_list = os.listdir(folder)
         print file_list
         for f in file_list:
             f.remove();
@@ -87,7 +85,7 @@ class blue_marble_desktop():
     def do_thing(self):
         self.create_folder()
 
-        #print os.listdir("images")
+        original_images = os.listdir("images")
         # Get a list of the most recent images
         image_list = urllib2.urlopen(self.url_list).read()
         #print image_list
@@ -107,6 +105,7 @@ class blue_marble_desktop():
             except:
                 thing = 1
                 #print "image write error for photo: " + str(i)
+        self.delete_images(original_images)
 
 
 
@@ -120,3 +119,6 @@ class blue_marble_desktop():
 
 blue_marble_desktop().do_thing()
 #print os.listdir("images")
+
+#TODO: set delete to only delete previous images if the process is succesful.
+#TODO: add section on network condition to install.
