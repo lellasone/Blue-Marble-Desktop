@@ -20,7 +20,7 @@ is a good chance to learn a bit about it. It can be a powerful tool.
 
 2)  Copy the executable (the .exe not the .pyw) to a folder of your choice.*
 
-3)  Open task scheduler by typing "task scheduler" into your windows search bar. 
+3)  Open task scheduler by typing "task scheduler" into your windows search bar.****
 
 4)  Select "create task" and give your new task a name and description of your choosing. 
 
@@ -65,3 +65,5 @@ is a good chance to learn a bit about it. It can be a powerful tool.
 and right clicking it to open the "properties" dialog. It will be under "location."
 
 ***Type "desktop" into your microsoft search bar, and then select "Choose Background..." 
+
+****http://windows.microsoft.com/en-US/windows/schedule-task#1TC=windows-7 
