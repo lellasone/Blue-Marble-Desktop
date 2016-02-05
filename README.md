@@ -59,9 +59,9 @@ is a good chance to learn a bit about it. It can be a powerful tool.
 16) Select fit. Your desktop background should now be configured. 
 
 
-* I recommend putting it in your program files folder for the sake of consistency. 
+*I recommend putting it in your program files folder for the sake of consistency. 
 
-** Location should be the location of the executable. You can also find it be locating the executable in explorer
+**Location should be the location of the executable. You can also find it be locating the executable in explorer
 and right clicking it to open the "properties" dialog. It will be under "location."
 
 ***Type "desktop" into your microsoft search bar, and then select "Choose Background..." 
