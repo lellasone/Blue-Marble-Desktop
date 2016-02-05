@@ -1,10 +1,12 @@
 # Blue-Marble-Desktop
 Python script to grab the latest DSCOVR EPIC images from the NASA site so they can be used as desktop backgrounds.
 
+***********************************************************
+
 Run the executable to fetch the images. A folder entitled "images" will be generated. See below for directions on using
 this tool to create a desktop background. 
 
-#######################################################
+************************************************************
 Install (To Get a changing desktop background): 
 
 Please follow the following instructions to install the script and set it to run once a day. The process should take 
