@@ -13,6 +13,9 @@ Please follow the following instructions to install the script and set it to run
 about 7 minutes from start to finish assuming moderate network speeds. If you are unfamiliar with task scheduler this
 is a good chance to learn a bit about it. It can be a powerful tool. 
 
+Note: Directions given for windows 10 your mileage may very. If you run into issues or have alternate direction recommendations
+please let me know. 
+
 
 (Use Task Scheduler to run the executable once a day)
 
@@ -38,7 +41,7 @@ is a good chance to learn a bit about it. It can be a powerful tool.
 
 8)  Leave the dropdown set to "start a program" and browse to the executable. 
 
-9)  Copy the location from the location bar and then select the executable. 
+9)  Copy the location of the folder from the location bar and then select the executable. 
 
 10) Paste the location you copied into the "start in" box.** (required)
 
@@ -48,7 +51,7 @@ is a good chance to learn a bit about it. It can be a powerful tool.
 
 
 
-(Set the "images" folder to be your background 
+(Set the "images" folder to be your background)
 
 13) Navigate to your desktop background settings.***
 
@@ -59,7 +62,7 @@ is a good chance to learn a bit about it. It can be a powerful tool.
 16) Select fit. Your desktop background should now be configured. 
 
 
-*I recommend putting it in your program files folder for the sake of consistency. YOU ONLY NEED THE EXECUTABLE. 
+*I recommend putting it in your home directory which can be found in "C:\Users\"
 
 **Location should be the location of the executable. You can also find it be locating the executable in explorer
 and right clicking it to open the "properties" dialog. It will be under "location."
