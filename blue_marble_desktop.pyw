@@ -83,29 +83,32 @@ class blue_marble_desktop():
 
 
     def do_thing(self):
-        self.create_folder()
+        try:
+            self.create_folder()
 
-        original_images = os.listdir("images")
-        # Get a list of the most recent images
-        image_list = urllib2.urlopen(self.url_list).read()
-        #print image_list
+            original_images = os.listdir("images")
+            # Get a list of the most recent images
+            image_list = urllib2.urlopen(self.url_list).read()
+            #print image_list
 
-        list = self.get_name_list(image_list)
-        #print list
-        #print len(list)
+            list = self.get_name_list(image_list)
+            #print list
+            #print len(list)
 
-        # for each name in the list, generate a unique file name and save the data to a file.
-        for i in range(0, len(list)):
-            try:
-                #print i
-                url_image = self.url_image_base + list[i-1]  + ".png"
-                image_name = list[i] + str(i) + ".png"
-                image_page = urllib2.urlopen(url_image) #get file from server.
-                self.save_file(image_page,image_name)
-            except:
-                thing = 1
-                #print "image write error for photo: " + str(i)
-        self.delete_images(original_images)
+            # for each name in the list, generate a unique file name and save the data to a file.
+            for i in range(0, len(list)):
+                try:
+                    #print i
+                    url_image = self.url_image_base + list[i-1]  + ".png"
+                    image_name = list[i] + str(i) + ".png"
+                    image_page = urllib2.urlopen(url_image) #get file from server.
+                    self.save_file(image_page,image_name)
+                except:
+                    thing = 1
+                    #print "image write error for photo: " + str(i)
+            self.delete_images(original_images)
+        except Exception as e:
+            silent = e
 
 
 
