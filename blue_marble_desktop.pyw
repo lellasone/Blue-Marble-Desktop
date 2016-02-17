@@ -25,6 +25,7 @@ See "UNLICENSE" for details, but the summary would be: Feel free to use whatever
 """
 import urllib2
 import os
+import shutil
 class blue_marble_desktop():
     def __init__(self):
 
@@ -77,16 +78,24 @@ class blue_marble_desktop():
         :param folder:
         :return:
         """
-        print file_list
-        for f in file_list:
-            f.remove();
+        try:
+            print file_list
+            for f in file_list:
+                f.remove();
+                print f
+        except Exception:
+            test =2
 
 
     def do_thing(self):
         try:
+
+
+            shutil.rmtree("images", ignore_errors=True)
             self.create_folder()
 
             original_images = os.listdir("images")
+            print original_images
             # Get a list of the most recent images
             image_list = urllib2.urlopen(self.url_list).read()
             #print image_list
@@ -98,17 +107,19 @@ class blue_marble_desktop():
             # for each name in the list, generate a unique file name and save the data to a file.
             for i in range(0, len(list)):
                 try:
-                    #print i
+                    print i
                     url_image = self.url_image_base + list[i-1]  + ".png"
                     image_name = list[i] + str(i) + ".png"
                     image_page = urllib2.urlopen(url_image) #get file from server.
                     self.save_file(image_page,image_name)
                 except:
                     thing = 1
-                    #print "image write error for photo: " + str(i)
+                    print "image write error for photo: " + str(i)
+            print original_images
             self.delete_images(original_images)
         except Exception as e:
             silent = e
+            print "error" + str(silent)
 
 
 
